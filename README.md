@@ -6,7 +6,7 @@ This repo contains examples of socket communication in Java:
 Client sends a message to the server.
 
 ## Two-Way Communication
-Client and server exchange messages interactively.
+Client and server exchange messages interactively until the client types "exit".
 
 ## How to Run
 1. Compile with `javac`
