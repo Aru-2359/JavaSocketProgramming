@@ -1,22 +1,18 @@
 import java.io.*;
 import java.net.*;
 
-public class MyServer {
+public class MyClient {
     public static void main(String[] args) {
         try {
-            ServerSocket ss = new ServerSocket(5555);
-            System.out.println("Server is ready...");
+            Socket s = new Socket("localhost", 5555);
 
-            Socket s = ss.accept();
-            System.out.println("Client connected!");
+            DataOutputStream dout = new DataOutputStream(s.getOutputStream());
 
-            DataInputStream dis = new DataInputStream(s.getInputStream());
+            dout.writeUTF("Hi Server, this is Client!");
+            dout.flush();
 
-            String msg = dis.readUTF();
-            System.out.println("Message: " + msg);
-
-            dis.close();
-            ss.close();
+            dout.close();
+            s.close();
         } catch (Exception e) {
             System.out.println(e);
         }
